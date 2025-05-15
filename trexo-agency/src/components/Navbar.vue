@@ -9,7 +9,7 @@
         >
           <!-- Logo -->
           <a class="flex flex-shrink-0 items-center mr-4" href="index.html">
-            <span class="hidden md:block text-white text-2xl font-bold ml-2"
+            <span class="md:block text-white text-2xl font-bold ml-2"
               >Trexo</span
             >
           </a>
@@ -17,13 +17,13 @@
             <div class="flex space-x-2">
               <a
                 href="index.html"
-                class="text-white bg-[#A2CCFF] hover:bg-gray-100 hover:text-black rounded-md px-3 py-2"
+                class="text-black bg-[#A2CCFF] hover:bg-gray-100 hover:text-black rounded-md px-3 py-2"
                 >Home</a
               >
               <a
                 href="jobs.html"
                 class="text-white hover:bg-gray-100 hover:text-black rounded-md px-3 py-2"
-                >Jobs</a
+                >Trips</a
               >
               <a
                 href="add-job.html"
