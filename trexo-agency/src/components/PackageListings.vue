@@ -21,6 +21,7 @@ import Package from "@/components/Package.vue";
           :destination="pkg.destination"
           :image="pkg.image"
           :price="pkg.price"
+          :id="pkg.id"
         />
       </div>
     </div>

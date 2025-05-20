@@ -1,5 +1,6 @@
 <script setup>
 import { defineProps } from "vue";
+import { RouterLink } from "vue-router";
 
 defineProps({
   image: {
@@ -9,6 +10,9 @@ defineProps({
     type: String,
   },
   price: {
+    type: String,
+  },
+  id: {
     type: String,
   },
 });
@@ -37,10 +41,10 @@ const newImageUrl = (fileName) => {
         </h4>
       </div>
       <div class="mt-8 flex justify-end">
-        <a
-          href="index.html"
+        <RouterLink
+          :to="`/packages/${id}`"
           class="bg-[#A2CCFF] rounded-md p-2 text-xs md:text-[10px] lg:text-xs"
-          >Read More</a
+          >Read More</RouterLink
         >
       </div>
     </div>

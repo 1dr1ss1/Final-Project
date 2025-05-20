@@ -5,7 +5,7 @@ import PackagesData from "../../pkgData.json";
 
 const urlCheck = (url) => {
   const route = useRoute();
-  console.log("This is the route: " + route.path);
+
   if (url === route.path) {
     return "hidden";
   }
@@ -29,6 +29,7 @@ const urlCheck = (url) => {
           :destination="pkg.destination"
           :image="pkg.image"
           :price="pkg.price"
+          :id="pkg.id"
         />
       </div>
     </div>

@@ -2,67 +2,79 @@
   {
     "id": "1",
     "destination": "Rome",
+    "country": "Italy",
     "image": "rome-pic.jpg",
     "price": "800",
     "description": "Experience the timeless charm of Rome with guided tours, fine dining, and luxury hotel stays near historic landmarks.",
     "agency": {
       "name": "Eterna Travels",
-      "contactEmail": "contact@eternatravels.com"
+      "contactEmail": "contact@eternatravels.com",
+      "companyDescription": "Eterna Travels specializes in curated European experiences, blending heritage with high-end comfort."
     }
   },
   {
     "id": "2",
     "destination": "Rabat",
+    "country": "Morocco",
     "image": "morocco-pic.jpg",
     "price": "1,200",
     "description": "Embark on a magical journey through Morocco, exploring colorful souks, desert landscapes, and ancient medinas.",
     "agency": {
       "name": "Sahara Routes",
-      "contactEmail": "explore@sahararoutes.ma"
+      "contactEmail": "explore@sahararoutes.ma",
+      "companyDescription": "Sahara Routes crafts authentic North African adventures, connecting travelers with Morocco's vibrant culture."
     }
   },
   {
     "id": "3",
     "destination": "Dubai",
+    "country": "United Arab Emirates",
     "image": "dubai-pic.jpeg",
     "price": "1,000",
     "description": "Discover the luxury of Dubai with sky-high towers, desert safaris, and world-class shopping experiences.",
     "agency": {
       "name": "Golden Sands Travel",
-      "contactEmail": "bookings@goldensands.ae"
+      "contactEmail": "bookings@goldensands.ae",
+      "companyDescription": "Golden Sands Travel delivers luxury tourism in the UAE, with bespoke experiences from desert to skyscraper."
     }
   },
   {
     "id": "4",
     "destination": "Bali",
+    "country": "Indonesia",
     "image": "bali-pic.jpg",
     "price": "950",
-    "description": "Relax on Bali’s stunning beaches and explore tranquil temples with a complete cultural and resort package.",
+    "description": "Relax on Bali\u2019s stunning beaches and explore tranquil temples with a complete cultural and resort package.",
     "agency": {
       "name": "Island Horizons",
-      "contactEmail": "support@islandhorizons.co"
+      "contactEmail": "support@islandhorizons.co",
+      "companyDescription": "Island Horizons curates serene island getaways, emphasizing cultural immersion and wellness travel."
     }
   },
   {
     "id": "5",
     "destination": "Paris",
+    "country": "France",
     "image": "paris-pic.jpg",
     "price": "800",
     "description": "Enjoy a romantic getaway in Paris, including Seine River cruises, Eiffel Tower views, and boutique shopping experiences.",
     "agency": {
       "name": "Amour Voyages",
-      "contactEmail": "hello@amourvoyages.fr"
+      "contactEmail": "hello@amourvoyages.fr",
+      "companyDescription": "Amour Voyages is your guide to intimate and stylish Parisian escapes, tailored for romance and elegance."
     }
   },
   {
     "id": "6",
     "destination": "Cape Town",
+    "country": "South Africa",
     "image": "cap-town-pic.jpg",
     "price": "780",
-    "description": "Discover South Africa’s natural beauty with mountain hikes, coastal tours, and vibrant local culture in Cape Town.",
+    "description": "Discover South Africa's natural beauty with mountain hikes, coastal tours, and vibrant local culture in Cape Town.",
     "agency": {
       "name": "Safari & Sea",
-      "contactEmail": "hello@safariandsea.co.za"
+      "contactEmail": "hello@safariandsea.co.za",
+      "companyDescription": "Safari & Sea offers nature-rich tours of Southern Africa, fusing coastal serenity with wild safari thrills."
     }
   }
 ]
