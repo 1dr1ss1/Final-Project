@@ -1,5 +1,6 @@
 <script setup>
 import { useRoute } from "vue-router";
+import { RouterLink } from "vue-router";
 import Package from "@/components/Package.vue";
 import PackagesData from "../../pkgData.json";
 
@@ -15,9 +16,10 @@ const urlCheck = (url) => {
 <template>
   <section class="bg-">
     <div class="flex justify-end">
-      <a
+      <RouterLink
+        to="/add-package"
         class="border-2 px-2 py-2 rounded-lg text-blue-600 border-blue-500 mt-6 border cursor-pointer mr-3 hover:bg-blue-500 hover:text-white md:mr-10 lg:mr-10 xl:mr-20"
-        >Add Package</a
+        >Add Package</RouterLink
       >
     </div>
   </section>
