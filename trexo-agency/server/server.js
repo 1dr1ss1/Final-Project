@@ -5,7 +5,12 @@ const app = express();
 // Connecting the client with the server
 const corsOptions = {
   origin: "https://localhost:5175",
+  credentials: true,
 };
+
+app.use(cors(corsOptions));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
   res.send("Hello");
