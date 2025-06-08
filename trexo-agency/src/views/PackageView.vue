@@ -5,30 +5,23 @@ import { ref } from "vue";
 
 const selectedCardData = ref({});
 
-const displayCorrectCard = () => {
-  const route = useRoute();
-  const match = pkgData.find((pkg) => pkg.id === route.params.id);
+const route = useRoute();
+const match = pkgData.find((pkg) => pkg.id === route.params.id);
 
-  if (match) {
-    selectedCardData.value = {
-      image: match.image,
-      destination: match.destination,
-      country: match.country,
-      price: match.price,
-      description: match.description,
-      agency: {
-        name: match.agency.name,
-        contactEmail: match.agency.contactEmail,
-        companyDescription: match.agency.companyDescription,
-      },
-    };
-    console.log(selectedCardData.value);
-  } else {
-    console.log("false");
-  }
-};
-
-displayCorrectCard();
+if (match) {
+  selectedCardData.value = {
+    image: match.image,
+    destination: match.destination,
+    country: match.country,
+    price: match.price,
+    description: match.description,
+    agency: {
+      name: match.agency.name,
+      contactEmail: match.agency.contactEmail,
+      companyDescription: match.agency.companyDescription,
+    },
+  };
+}
 </script>
 
 <template>
@@ -49,19 +42,20 @@ displayCorrectCard();
   <section class="bg-blue-50 min-h-screen">
     <div class="container m-auto py-10 px-6">
       <div
-        class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 md:gap-10 w-full gap-6"
+        class="grid grid-cols-1 md:px-10 md:grid-cols-1 lg:grid-cols-2 md:gap-10 w-full gap-6 xl:px-20"
       >
         <main>
           <div
             class="bg-white p-6 rounded-lg shadow-md text-center md:text-left"
           >
-            <h1 class="text-3xl font-bold mb-4">
+            <h1 class="text-3xl font-bold mb-2">
               {{ selectedCardData.destination }}
             </h1>
+
             <div
               class="text-gray-500 mb-4 flex align-middle justify-center md:justify-start"
             >
-              <i class="pi pi-map-marker text-orange-500 p-1"></i>
+              <i class="pi pi-map-marker text-orange-600 p-1"></i>
               <p class="text-orange-700">{{ selectedCardData.country }}</p>
             </div>
           </div>
@@ -82,7 +76,7 @@ displayCorrectCard();
         </main>
 
         <!-- Sidebar -->
-        <aside>
+        <aside class="lg:pl-20">
           <!-- Company Info -->
           <div class="bg-white p-6 rounded-lg shadow-md">
             <h3 class="text-blue-800 text-xl font-bold mb-6">Agency Info</h3>
@@ -106,10 +100,10 @@ displayCorrectCard();
           <div
             class="bg-white p-6 rounded-lg shadow-md mt-6 flex flex-col justify-center items-center"
           >
-            <h3 class="text-xl font-bold mb-6">Manage Job</h3>
+            <h3 class="text-xl font-bold mb-6">Manage Package</h3>
             <a
               href="add-job.html"
-              class="bg-blue-500 hover:bg-green-600 text-white text-center font-bold py-2 px-4 rounded-full w-[50%] focus:outline-none focus:shadow-outline mt-4 block"
+              class="bg-blue-500 hover:bg-blue-600 text-white text-center font-bold py-2 px-4 rounded-full w-[50%] focus:outline-none focus:shadow-outline mt-4 block"
               >Edit Job</a
             >
             <button

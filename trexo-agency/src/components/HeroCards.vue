@@ -6,7 +6,7 @@ import Card from "@/components/Card.vue";
   <section class="mt-20">
     <div class="container-xl lg:container m-auto">
       <div
-        class="grid grid-cols-1 md:grid-cols-2 sm:grid-cols-2 gap-4 p-4 rounded-lg"
+        class="grid grid-cols-1 md:grid-cols-2 sm:grid-cols-2 gap-4 p-4 rounded-lg md:px-10 xl:px-50"
       >
         <Card
           header="For Travelers"

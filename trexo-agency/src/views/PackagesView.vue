@@ -13,7 +13,15 @@ const urlCheck = (url) => {
 </script>
 
 <template>
-  <section class="bg-gray-200 px-4 py-10 mx-3 my-10 rounded-xl min-h-screen">
+  <section class="bg-">
+    <div class="flex justify-end">
+      <a
+        class="border-2 px-2 py-2 rounded-lg text-blue-600 border-blue-500 mt-6 border cursor-pointer mr-3 hover:bg-blue-500 hover:text-white md:mr-10 lg:mr-10 xl:mr-20"
+        >Add Package</a
+      >
+    </div>
+  </section>
+  <section class="bg-gray-200 px-4 py-10 my-10 min-h-screen">
     <div class="container-xl lg:container m-auto">
       <div class="text-center">
         <h2 class="text-2xl md:text-3xl text-blue-700 font-bold p-3 mb-10">

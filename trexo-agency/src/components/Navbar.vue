@@ -1,5 +1,16 @@
 <script setup>
 import { RouterLink } from "vue-router";
+import { computed } from "vue";
+import { useRoute } from "vue-router";
+
+// get the current path
+const route = useRoute();
+const currentPath = computed(() => route.path);
+
+// check the current path and return true if it matches the path
+const isActive = (path) => {
+  return currentPath.value === path;
+};
 </script>
 
 <template>
@@ -22,17 +33,32 @@ import { RouterLink } from "vue-router";
             <div class="flex space-x-2">
               <RouterLink
                 to="/"
-                class="text-white underline decoration-[#A2CCFF] decoration-2 hover:bg-gray-100 hover:text-black rounded-md px-3 py-2"
+                :class="[
+                  'text-white rounded-md px-3 py-2',
+                  isActive('/')
+                    ? 'underline decoration-[#A2CCFF] decoration-2'
+                    : 'hover:bg-gray-100 hover:text-black',
+                ]"
                 >Home</RouterLink
               >
               <RouterLink
                 to="/packages"
-                class="text-white hover:bg-gray-100 hover:text-black rounded-md px-3 py-2"
+                :class="[
+                  'text-white rounded-md px-3 py-2',
+                  isActive('/packages')
+                    ? 'underline decoration-[#A2CCFF] decoration-2'
+                    : 'hover:bg-gray-100 hover:text-black',
+                ]"
                 >Packages
               </RouterLink>
               <RouterLink
                 to="/about"
-                class="text-white hover:bg-gray-100 hover:text-black rounded-md px-3 py-2"
+                :class="[
+                  'text-white rounded-md px-3 py-2',
+                  isActive('/about')
+                    ? 'underline decoration-[#A2CCFF] decoration-2'
+                    : 'hover:bg-gray-100 hover:text-black',
+                ]"
                 >About</RouterLink
               >
             </div>

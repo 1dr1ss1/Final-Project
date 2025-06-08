@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+import { RouterLink } from "vue-router";
+</script>
 
 <template>
   <section class="bg-[#021043] border-white-500 flex justify-center p-2">
@@ -7,11 +9,11 @@
         class="flex flex-1 items-center justify-center md:items-stretch md:justify-start"
       >
         <!-- Logo -->
-        <a class="" href="index.html">
+        <RouterLink class="" to="/">
           <span class="md:block text-[#BBFBFF] text-2xl font-bold ml-2"
             >Trexo</span
           >
-        </a>
+        </RouterLink>
       </div>
     </div>
   </section>
