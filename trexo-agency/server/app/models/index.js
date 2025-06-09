@@ -4,12 +4,18 @@ const Sequelize = require("sequelize");
 const connex = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
   dialect: dbConfig.dialect,
-  port: 8081,
+  //   port: 8081,
   operatorAliases: false,
 });
 
 const db = {};
 db.Sequelize = Sequelize;
 db.connex = connex;
+// models
+db.agencies = require("./agency.model.js")(connex, Sequelize);
 db.packages = require("./package.model.js")(connex, Sequelize);
-module.exports = { db };
+
+// relationships
+db.packages.belongsTo(db.agencies, { foreignKey: "agencyId" });
+db.agencies.hasMany(db.packages, { foreignKey: "agencyId" });
+module.exports = db;
