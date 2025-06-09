@@ -13,6 +13,11 @@ exports.findAll = (req, res) => {
     ],
   })
     .then((data) => {
+      console.log(`Found ${data.length} packages`);
+      console.log(
+        "First package:",
+        data[0] ? JSON.stringify(data[0], null, 2) : "No packages found"
+      );
       res.send(data);
     })
     .catch((error) => {

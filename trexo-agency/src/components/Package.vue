@@ -5,20 +5,29 @@ import { RouterLink } from "vue-router";
 defineProps({
   image: {
     type: String,
+    required: true,
   },
   destination: {
     type: String,
+    required: true,
   },
   price: {
     type: String,
+    required: true,
   },
   id: {
     type: String,
+    required: true,
   },
 });
 
-const newImageUrl = (fileName) => {
-  return new URL(`../assets/images/${fileName}`, import.meta.url).href;
+const getImageUrl = (imageName) => {
+  try {
+    return new URL(`../assets/images/${imageName}`, import.meta.url).href;
+  } catch (error) {
+    console.error("Error loading image:", error);
+    return new URL("../assets/images/about-pic.jpg", import.meta.url).href;
+  }
 };
 </script>
 
@@ -28,7 +37,7 @@ const newImageUrl = (fileName) => {
     <div class="p-4">
       <div class="mb-3 aspect-[16/9]">
         <img
-          v-bind:src="newImageUrl(image)"
+          v-bind:src="getImageUrl(image)"
           class="w-full h-full object-cover"
           alt="Image"
         />

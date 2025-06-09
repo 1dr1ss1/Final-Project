@@ -25,7 +25,7 @@ const seedDatabase = async () => {
       await db.packages.create({
         destination: packageData.destination,
         country: packageData.country,
-        image: packageData.country,
+        image: packageData.image,
         price: parseFloat(packageData.price.replace(",", "")),
         description: packageData.description,
         agencyId: agency.id,

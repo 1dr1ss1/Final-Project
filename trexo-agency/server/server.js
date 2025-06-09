@@ -9,7 +9,7 @@ const db = require("./app/models");
 
 // Middleware
 const corsOptions = {
-  origin: "https://localhost:5170",
+  origin: "http://localhost:5170",
   credentials: true,
 };
 app.use(cors(corsOptions));
@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // force sync database
-db.sequelize.sync().then(() => {
+db.sequelize.sync({ force: false }).then(() => {
   console.log("Database synced");
 });
 
