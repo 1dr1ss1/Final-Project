@@ -7,6 +7,8 @@ const db = require("./app/models");
 // Simple database test
 db.connex.sync();
 
+require("./app/routes/package.route")(app);
+
 const corsOptions = {
   origin: "https://localhost:5175",
   credentials: true,

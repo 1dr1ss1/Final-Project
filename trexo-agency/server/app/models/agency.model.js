@@ -18,5 +18,12 @@ module.exports = (connex, Sequelize) => {
       allowNull: false,
     },
   });
+
+  Agency.associate = (models) => {
+    Agency.hasMany(models.packages, {
+      foreignKey: "agencyId",
+      as: "packages",
+    });
+  };
   return Agency;
 };

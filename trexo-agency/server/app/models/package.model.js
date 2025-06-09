@@ -22,7 +22,6 @@ module.exports = (connex, Sequelize) => {
       allowNull: false,
     },
     image: {
-      // Add image field
       type: Sequelize.STRING,
       allowNull: false,
     },
@@ -35,5 +34,12 @@ module.exports = (connex, Sequelize) => {
       },
     },
   });
+
+  Package.associate = (models) => {
+    Package.belongsTo(models.agency, {
+      foreignKey: "agencyId",
+      as: "agency",
+    });
+  };
   return Package;
 };
