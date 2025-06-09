@@ -9,7 +9,7 @@ const db = require("./app/models");
 
 // Middleware
 const corsOptions = {
-  origin: "https://localhost:5175",
+  origin: "https://localhost:5170",
   credentials: true,
 };
 app.use(cors(corsOptions));
