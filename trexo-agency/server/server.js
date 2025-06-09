@@ -2,6 +2,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
+const db = require("./app/models/package.model");
+
+// db.connex.sync();
 // Connecting the client with the server
 const corsOptions = {
   origin: "https://localhost:5175",
