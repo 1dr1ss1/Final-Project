@@ -1,5 +1,5 @@
-module.exports = (connex, Sequelize) => {
-  const Package = connex.define("package", {
+module.exports = (sequelize, Sequelize) => {
+  const Package = sequelize.define("package", {
     id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
@@ -35,11 +35,5 @@ module.exports = (connex, Sequelize) => {
     },
   });
 
-  Package.associate = (models) => {
-    Package.belongsTo(models.agency, {
-      foreignKey: "agencyId",
-      as: "agency",
-    });
-  };
   return Package;
 };

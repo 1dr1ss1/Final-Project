@@ -1,21 +1,27 @@
 const dbConfig = require("../config/db.config.js");
 const Sequelize = require("sequelize");
 // connecting mySQL with Sequelize to handle queries
-const connex = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
+const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
   dialect: dbConfig.dialect,
-  operatorAliases: false,
+  operatorsAliases: false,
+  pool: {
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000,
+  },
 });
 
 const db = {};
 db.Sequelize = Sequelize;
-db.connex = connex;
+db.sequelize = sequelize;
 // models
-db.agencies = require("./agency.model.js")(connex, Sequelize);
-db.packages = require("./package.model.js")(connex, Sequelize);
+db.agencies = require("./agency.model.js")(sequelize, Sequelize);
+db.packages = require("./package.model.js")(sequelize, Sequelize);
 
 // // relationships
-db.packages.belongsTo(db.agencies, { foreignKey: "agencyId" });
-db.agencies.hasMany(db.packages, { foreignKey: "agencyId" });
+db.packages.belongsTo(db.agencies, { foreignKey: "agencyId", as: "agency" });
+db.agencies.hasMany(db.packages, { foreignKey: "agencyId", as: "packages" });
 
 module.exports = db;

@@ -1,5 +1,5 @@
-module.exports = (connex, Sequelize) => {
-  const Agency = connex.define("agency", {
+module.exports = (sequelize, Sequelize) => {
+  const Agency = sequelize.define("agency", {
     id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
@@ -19,11 +19,5 @@ module.exports = (connex, Sequelize) => {
     },
   });
 
-  Agency.associate = (models) => {
-    Agency.hasMany(models.packages, {
-      foreignKey: "agencyId",
-      as: "packages",
-    });
-  };
   return Agency;
 };
