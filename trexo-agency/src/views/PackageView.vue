@@ -1,27 +1,13 @@
 <script setup>
 import { RouterLink, useRoute } from "vue-router";
-import pkgData from "../../pkgData.json";
-import { ref } from "vue";
-
-const selectedCardData = ref({});
+import { usePackage } from "@/composables/usePackage";
 
 const route = useRoute();
-const match = pkgData.find((pkg) => pkg.id === route.params.id);
-
-if (match) {
-  selectedCardData.value = {
-    image: match.image,
-    destination: match.destination,
-    country: match.country,
-    price: match.price,
-    description: match.description,
-    agency: {
-      name: match.agency.name,
-      contactEmail: match.agency.contactEmail,
-      companyDescription: match.agency.companyDescription,
-    },
-  };
-}
+const {
+  singlePackage: selectedPackage,
+  loading,
+  error,
+} = usePackage(route.params.id);
 </script>
 
 <template>
@@ -38,8 +24,21 @@ if (match) {
     </div>
   </section>
 
+  <!--Loading State-->
+  <div v-if="loading" class="text-center py-10">
+    <div
+      class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-700 mx-auto"
+    ></div>
+    <p class="mt-4 text-gray-600">Loading package details...</p>
+  </div>
+
+  <!--Error State-->
+  <div v-else-if="error" class="text-center py-10">
+    <p class="text-red-500">{{ error }}</p>
+  </div>
+
   <!--Package Description-->
-  <section class="bg-blue-50 min-h-screen">
+  <section v-else class="bg-blue-50 min-h-screen">
     <div class="container m-auto py-10 px-6">
       <div
         class="grid grid-cols-1 md:px-10 md:grid-cols-1 lg:grid-cols-2 md:gap-10 w-full gap-6 xl:px-20"
@@ -49,14 +48,14 @@ if (match) {
             class="bg-white p-6 rounded-lg shadow-md text-center md:text-left"
           >
             <h1 class="text-3xl font-bold mb-2">
-              {{ selectedCardData.destination }}
+              {{ selectedPackage.destination }}
             </h1>
 
             <div
               class="text-gray-500 mb-4 flex align-middle justify-center md:justify-start"
             >
               <i class="pi pi-map-marker text-orange-600 p-1"></i>
-              <p class="text-orange-700">{{ selectedCardData.country }}</p>
+              <p class="text-orange-700">{{ selectedPackage.country }}</p>
             </div>
           </div>
 
@@ -66,12 +65,12 @@ if (match) {
             </h3>
 
             <p class="mb-4">
-              {{ selectedCardData.description }}
+              {{ selectedPackage.description }}
             </p>
 
             <h3 class="text-blue-800 text-lg font-bold mb-2">Price</h3>
 
-            <p class="mb-4">${{ selectedCardData.price }} for 10 days</p>
+            <p class="mb-4">${{ selectedPackage.price }} for 10 days</p>
           </div>
         </main>
 
@@ -81,10 +80,10 @@ if (match) {
           <div class="bg-white p-6 rounded-lg shadow-md">
             <h3 class="text-blue-800 text-xl font-bold mb-6">Agency Info</h3>
 
-            <h2 class="text-2xl">{{ selectedCardData.agency.name }}</h2>
+            <h2 class="text-2xl">{{ selectedPackage.agency.name }}</h2>
 
             <p class="my-2">
-              {{ selectedCardData.agency.companyDescription }}
+              {{ selectedPackage.agency.companyDescription }}
             </p>
 
             <hr class="my-4" />
@@ -92,7 +91,7 @@ if (match) {
             <h3 class="text-xl">Contact Email:</h3>
 
             <p class="my-2 bg-blue-100 p-2 font-bold">
-              {{ selectedCardData.agency.contactEmail }}
+              {{ selectedPackage.agency.contactEmail }}
             </p>
           </div>
 

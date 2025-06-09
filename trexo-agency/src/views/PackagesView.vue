@@ -2,11 +2,13 @@
 import { useRoute } from "vue-router";
 import { RouterLink } from "vue-router";
 import Package from "@/components/Package.vue";
-import PackagesData from "../../pkgData.json";
+// import PackagesData from "../../pkgData.json";
+import { usePackages } from "@/composables/usePackages";
+
+const route = useRoute();
+const { packages, loading, error } = usePackages();
 
 const urlCheck = (url) => {
-  const route = useRoute();
-
   if (url === route.path) {
     return "hidden";
   }
@@ -30,12 +32,27 @@ const urlCheck = (url) => {
           Available Packages
         </h2>
       </div>
+
+      <!-- Loading State -->
+      <div v-if="loading" class="text-center py-10">
+        <div
+          class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-700 mx-auto"
+        ></div>
+        <p class="mt-4 text-gray-600">Loading packages...</p>
+      </div>
+
+      <!-- Error State -->
+      <div v-else-if="error" class="text-center py-10">
+        <p class="text-red-500">{{ error }}</p>
+      </div>
+
       <div
+        v-else
         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6"
       >
         <Package
-          v-for="(pkg, index) in PackagesData"
-          :key="index"
+          v-for="pkg in packages"
+          :key="pkg.id"
           :destination="pkg.destination"
           :image="pkg.image"
           :price="pkg.price"
