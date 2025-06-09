@@ -10,6 +10,16 @@ class PackageDataService {
       },
     });
   }
+  get(id) {
+    return http.get(`/api/packages/${id}`);
+  }
+  update(id, data) {
+    return http.put(`/api/packages/${id}`, data, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+  }
 }
 
 export default new PackageDataService();

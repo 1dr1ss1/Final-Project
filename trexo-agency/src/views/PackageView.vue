@@ -107,10 +107,10 @@ const handleDelete = async () => {
             class="bg-white p-6 rounded-lg shadow-md mt-6 flex flex-col justify-center items-center"
           >
             <h3 class="text-xl font-bold mb-6">Manage Package</h3>
-            <a
-              href="add-job.html"
+            <RouterLink
+              to="/edit-package/:id"
               class="bg-blue-500 hover:bg-blue-600 text-white text-center font-bold py-2 px-4 rounded-full w-[50%] focus:outline-none focus:shadow-outline mt-4 block"
-              >Edit</a
+              >Edit</RouterLink
             >
             <button
               @click="handleDelete"

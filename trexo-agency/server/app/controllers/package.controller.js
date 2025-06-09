@@ -151,3 +151,70 @@ exports.delete = (req, res) => {
       });
     });
 };
+
+// Update a package
+exports.update = (req, res) => {
+  upload(req, res, async function (err) {
+    if (err) {
+      console.error("Upload error:", err);
+      return res.status(400).send({
+        message: "Error uploading file: " + err.message,
+      });
+    }
+
+    const id = req.params.id;
+
+    try {
+      // First, update or find the agency
+      const [agency, created] = await Agency.findOrCreate({
+        where: { contactEmail: req.body.agency.contactEmail },
+        defaults: {
+          name: req.body.agency.name,
+          contactEmail: req.body.agency.contactEmail,
+          companyDescription: req.body.agency.companyDescription,
+        },
+      });
+
+      // Prepare update data
+      const updateData = {
+        destination: req.body.destination,
+        country: req.body.country,
+        price: req.body.price,
+        description: req.body.description,
+        agencyId: agency.id,
+      };
+
+      // Only update image if a new one was uploaded
+      if (req.file) {
+        updateData.image = `/uploads/${req.file.filename}`;
+      }
+
+      // Update the package
+      const [num] = await Package.update(updateData, {
+        where: { id: id },
+      });
+
+      if (num == 1) {
+        // Get the updated package with its agency
+        const updatedPackage = await Package.findByPk(id, {
+          include: [
+            {
+              model: Agency,
+              as: "agency",
+            },
+          ],
+        });
+        res.send(updatedPackage);
+      } else {
+        res.status(404).send({
+          message: `Cannot update Package with id=${id}. Maybe Package was not found!`,
+        });
+      }
+    } catch (error) {
+      console.error("Error updating package:", error);
+      res.status(500).send({
+        message: "Error updating Package with id=" + id,
+      });
+    }
+  });
+};
