@@ -114,7 +114,7 @@ const handleDelete = async () => {
             >
             <button
               @click="handleDelete"
-              class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-[50%] focus:outline-none focus:shadow-outline mt-4 block"
+              class="cursor-pointer bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-[50%] focus:outline-none focus:shadow-outline mt-4 block"
             >
               Delete
             </button>
