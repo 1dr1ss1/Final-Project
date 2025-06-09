@@ -25,7 +25,7 @@ const urlCheck = (url) => {
       >
     </div>
   </section>
-  <section class="bg-gray-200 px-4 py-10 my-10 min-h-screen">
+  <section class="bg-gray-200 px-4 py-10 my-10 min-h-screen xl:px-20">
     <div class="container-xl lg:container m-auto">
       <div class="text-center">
         <h2 class="text-2xl md:text-3xl text-blue-700 font-bold p-3 mb-10">
@@ -48,7 +48,7 @@ const urlCheck = (url) => {
 
       <div
         v-else
-        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-12"
       >
         <Package
           v-for="pkg in packages"

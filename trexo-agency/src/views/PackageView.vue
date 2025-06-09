@@ -7,7 +7,14 @@ const {
   singlePackage: selectedPackage,
   loading,
   error,
+  deletePackage,
 } = usePackage(route.params.id);
+
+const handleDelete = async () => {
+  if (confirm("Are you sure you want to delete this package?")) {
+    await deletePackage();
+  }
+};
 </script>
 
 <template>
@@ -106,6 +113,7 @@ const {
               >Edit</a
             >
             <button
+              @click="handleDelete"
               class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-[50%] focus:outline-none focus:shadow-outline mt-4 block"
             >
               Delete

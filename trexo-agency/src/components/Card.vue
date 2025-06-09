@@ -33,7 +33,7 @@ const urlProvider = (buttonLabel) => {
   if (buttonLabel === "View Packages") {
     return "/packages";
   } else {
-    return "/";
+    return "/add-package";
   }
 };
 </script>

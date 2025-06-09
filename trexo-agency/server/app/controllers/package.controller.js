@@ -54,3 +54,28 @@ exports.findOne = (req, res) => {
       });
     });
 };
+
+// Delete a package
+exports.delete = (req, res) => {
+  const id = req.params.id;
+
+  Package.destroy({
+    where: { id: id },
+  })
+    .then((num) => {
+      if (num == 1) {
+        res.send({
+          message: "Package was deleted successfully!",
+        });
+      } else {
+        res.send({
+          message: `Cannot delete Package with id=${id}. Maybe Package was not found!`,
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Could not delete Package with id=" + id,
+      });
+    });
+};

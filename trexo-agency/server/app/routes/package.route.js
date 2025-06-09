@@ -8,5 +8,8 @@ module.exports = (app) => {
   // get single package
   router.get("/:id", packages.findOne);
 
+  // delete package
+  router.delete("/:id", packages.delete);
+
   app.use("/api/packages", router);
 };
